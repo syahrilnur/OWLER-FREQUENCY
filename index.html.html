@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWLER FREQUENCY — Official School Radio | Owler English Club MTs Negeri 1 Boalemo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Serif (Playfair Display) & Sans-Serif (Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-white': '#FAF8F3',
+                        'soft-cream': '#F0E5D2',
+                        'coffee-brown': '#795438',
+                        'dark-espresso': '#38271E',
+                        'muted-taupe': '#B6A18A',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF8F3;
+            color: #38271E;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#B6A18A 0.4px, transparent 0.4px);
+            background-size: 24px 24px;
+        }
+        
+        .serif-font {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Vintage Paper & Card Border Style */
+        .vintage-border {
+            border: 1px solid #B6A18A;
+            box-shadow: 4px 4px 0px #F0E5D2, 8px 8px 0px rgba(121, 84, 56, 0.1);
+        }
+
+        .vintage-card {
+            background: #FAF8F3;
+            border: 1px solid #B6A18A;
+            transition: all 0.3s ease;
+        }
+
+        .vintage-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0px #795438;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B6A18A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #795438;
+        }
+
+        .nav-link.active {
+            color: #795438;
+            border-bottom: 2px solid #795438;
+            font-weight: 700;
+        }
+
+        /* Badge pulse indicator for schedule */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-soft-pulse {
+            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-soft-cream selection:text-dark-espresso">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-dark-espresso text-warm-white text-xs md:text-sm py-2 px-4 text-center border-b border-coffee-brown">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span class="tracking-wide">
+                <i class="fa-solid fa-bullhorn text-coffee-brown mr-2"></i>
+                Official School Radio Website — <strong>Owler English Club MTs Negeri 1 Boalemo (Matsagisa)</strong>
+            </span>
+            <span class="text-xs text-muted-taupe bg-coffee-brown/30 px-3 py-1 rounded-full border border-muted-taupe/30">
+                <i class="fa-regular fa-clock mr-1"></i> Siaran Berikutnya: Jumat, 13.50 WITA
+            </span>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-warm-white/95 backdrop-blur-md border-b border-muted-taupe/40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Official Logo & Header Brand -->
+                <a href="#home" onclick="showTab('home')" class="flex items-center gap-3 group">
+                    <img id="header-logo" src="Desain tanpa judul (6).png" alt="Logo Owler Frequency" class="h-12 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/120x120/F0E5D2/38271E?text=Logo+Owler+Frequency'">
+                    <div>
+                        <span class="serif-font text-xl md:text-2xl font-bold tracking-tight text-dark-espresso block leading-tight">OWLER FREQUENCY</span>
+                        <span class="text-xs font-semibold tracking-widest uppercase text-coffee-brown block">Tune In. Speak Up.</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-dark-espresso">
+                    <button onclick="showTab('home')" id="nav-home" class="nav-link active py-2 transition-colors hover:text-coffee-brown">Home</button>
+                    <button onclick="showTab('message')" id="nav-message" class="nav-link py-2 transition-colors hover:text-coffee-brown">Message Corner</button>
+                    <button onclick="showTab('song')" id="nav-song" class="nav-link py-2 transition-colors hover:text-coffee-brown">Song Request</button>
+                    <button onclick="showTab('topic')" id="nav-topic" class="nav-link py-2 transition-colors hover:text-coffee-brown">Topic Suggestion</button>
+                    <button onclick="showTab('archive')" id="nav-archive" class="nav-link py-2 transition-colors hover:text-coffee-brown">Archive</button>
+                    <button onclick="showTab('activities')" id="nav-activities" class="nav-link py-2 transition-colors hover:text-coffee-brown">Our Activities</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden">
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 rounded-md text-dark-espresso hover:bg-soft-cream focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Nav Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-muted-taupe bg-warm-white px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <button onclick="showTab('home')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">Home</button>
+            <button onclick="showTab('message')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">Message Corner</button>
+            <button onclick="showTab('song')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">English Song Request</button>
+            <button onclick="showTab('topic')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">Topic Suggestion</button>
+            <button onclick="showTab('archive')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">Frequency Archive</button>
+            <button onclick="showTab('activities')" class="block w-full text-left py-2 px-3 rounded hover:bg-soft-cream">Our Activities</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= SECTION 1: HOME PAGE ================= -->
+        <section id="page-home" class="space-y-12">
+            
+            <!-- Hero Banner -->
+            <div class="relative bg-soft-cream/60 rounded-2xl p-6 md:p-12 border border-muted-taupe/50 overflow-hidden vintage-border">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-8 space-y-6 text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-warm-white border border-coffee-brown/30 rounded-full text-xs text-coffee-brown font-semibold">
+                            <i class="fa-solid fa-radio text-coffee-brown"></i> Program Radio Sekolah Interaktif
+                        </div>
+                        <h1 class="serif-font text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-espresso leading-tight">
+                            Every voice has a story.<br>
+                            Every message has a meaning.
+                        </h1>
+                        <p class="text-base sm:text-lg text-dark-espresso/80 leading-relaxed max-w-2xl">
+                            Welcome to <strong>Owler Frequency</strong>, where your voice becomes part of our school. Program siaran radio interaktif persembahan Owler English Club MTs Negeri 1 Boalemo.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="showTab('message')" class="bg-coffee-brown hover:bg-dark-espresso text-warm-white px-6 py-3 rounded-lg font-medium transition-all shadow-md flex items-center gap-2">
+                                <i class="fa-regular fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                            <button onclick="showTab('song')" class="bg-warm-white hover:bg-soft-cream text-dark-espresso border border-coffee-brown px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-music"></i> Request Lagu
+                            </button>
+                            <button onclick="showTab('topic')" class="bg-warm-white hover:bg-soft-cream text-dark-espresso border border-coffee-brown px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2">
+                                <i class="fa-regular fa-lightbulb"></i> Usul Topik
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Official Hero Logo Display -->
+                    <div class="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-warm-white/80 rounded-xl border border-muted-taupe/40 shadow-inner">
+                        <img src="Desain tanpa judul (6).png" alt="Logo Owler Frequency" class="w-48 sm:w-56 h-auto object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/200x200/F0E5D2/38271E?text=Logo+Owler+Frequency'">
+                        <div class="text-center">
+                            <span class="text-xs uppercase tracking-widest text-muted-taupe font-bold block">MTs Negeri 1 Boalemo</span>
+                            <span class="serif-font text-sm text-dark-espresso italic font-semibold">Matsagisa Boalemo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule & Concept Overview Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Live Schedule Info -->
+                <div class="bg-warm-white p-6 rounded-xl border border-muted-taupe/50 space-y-3">
+                    <div class="flex items-center gap-3 text-coffee-brown">
+                        <i class="fa-solid fa-calendar-days text-xl"></i>
+                        <h3 class="serif-font font-bold text-lg text-dark-espresso">Jadwal Siaran Radio</h3>
+                    </div>
+                    <p class="text-sm text-dark-espresso/80">Siaran Owler Frequency dibawakan secara langsung melalui mikrofon sekolah setiap minggu:</p>
+                    <div class="p-3 bg-soft-cream/50 rounded-lg border border-muted-taupe/30 text-sm space-y-1">
+                        <div class="font-bold text-dark-espresso"><i class="fa-regular fa-clock mr-1 text-coffee-brown"></i> Setiap Hari Jumat</div>
+                        <div class="text-xs text-dark-espresso/70">Waktu: 13.50 WITA</div>
+                        <div class="text-xs text-dark-espresso/70">Lokasi: Mikrofon Sentral Sekolah Matsagisa</div>
+                    </div>
+                </div>
+
+                <!-- Program Description -->
+                <div class="bg-warm-white p-6 rounded-xl border border-muted-taupe/50 space-y-3">
+                    <div class="flex items-center gap-3 text-coffee-brown">
+                        <i class="fa-solid fa-microphone-lines text-xl"></i>
+                        <h3 class="serif-font font-bold text-lg text-dark-espresso">Apa itu Owler Frequency?</h3>
+                    </div>
+                    <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                        Program kerja Owler English Club yang menggabungkan website interaktif dengan siaran mikrofon sekolah. Memberikan ruang bagi siswa untuk menyampaikan pesan apresiasi, request lagu bahasa Inggris, dan mendiskusikan isu sekolah.
+                    </p>
+                </div>
+
+                <!-- Vision & Tagline -->
+                <div class="bg-warm-white p-6 rounded-xl border border-muted-taupe/50 space-y-3">
+                    <div class="flex items-center gap-3 text-coffee-brown">
+                        <i class="fa-solid fa-quote-left text-xl"></i>
+                        <h3 class="serif-font font-bold text-lg text-dark-espresso">Tune In. Speak Up.</h3>
+                    </div>
+                    <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                        Mengajak seluruh siswa MTs Negeri 1 Boalemo untuk berani menyampaikan pendapat, saling mendengarkan, serta membangun budaya komunikasi yang ramah, santun, dan inspiratif.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Workflow Section (Alur Kerja) -->
+            <div class="bg-soft-cream/30 p-8 rounded-2xl border border-muted-taupe/40 space-y-6">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">How It Works</span>
+                    <h2 class="serif-font text-2xl md:text-3xl font-bold text-dark-espresso">Alur Kerja Owler Frequency</h2>
+                    <p class="text-sm text-dark-espresso/70">Setiap pesan dan usulan diproses secara santun, transparan, dan bertanggung jawab.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                    <div class="bg-warm-white p-4 rounded-lg border border-muted-taupe/40 space-y-2">
+                        <span class="text-xs font-bold text-coffee-brown bg-soft-cream px-2 py-0.5 rounded">Langkah 1</span>
+                        <h4 class="font-bold text-sm text-dark-espresso">1. Submission</h4>
+                        <p class="text-xs text-dark-espresso/70">Siswa mengirimkan pesan, request lagu, atau usulan topik via formulir website.</p>
+                    </div>
+                    <div class="bg-warm-white p-4 rounded-lg border border-muted-taupe/40 space-y-2">
+                        <span class="text-xs font-bold text-coffee-brown bg-soft-cream px-2 py-0.5 rounded">Langkah 2</span>
+                        <h4 class="font-bold text-sm text-dark-espresso">2. Screening & Moderation</h4>
+                        <p class="text-xs text-dark-espresso/70">Pemeriksaan otomatis & peninjauan manual oleh tim pengelola demi keamanan bersama.</p>
+                    </div>
+                    <div class="bg-warm-white p-4 rounded-lg border border-muted-taupe/40 space-y-2">
+                        <span class="text-xs font-bold text-coffee-brown bg-soft-cream px-2 py-0.5 rounded">Langkah 3</span>
+                        <h4 class="font-bold text-sm text-dark-espresso">3. Broadcasting</h4>
+                        <p class="text-xs text-dark-espresso/70">Konten terpilih dibacakan oleh penyiar Owler English Club di mikrofon sekolah.</p>
+                    </div>
+                    <div class="bg-warm-white p-4 rounded-lg border border-muted-taupe/40 space-y-2">
+                        <span class="text-xs font-bold text-coffee-brown bg-soft-cream px-2 py-0.5 rounded">Langkah 4</span>
+                        <h4 class="font-bold text-sm text-dark-espresso">4. Archive & Evaluation</h4>
+                        <p class="text-xs text-dark-espresso/70">Rangkuman siaran didokumentasikan di arsip website untuk bahan evaluasi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Activities Preview Section -->
+            <div class="space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-muted-taupe/40 pb-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">Owler English Club</span>
+                        <h2 class="serif-font text-2xl md:text-3xl font-bold text-dark-espresso">Featured Activities</h2>
+                    </div>
+                    <button onclick="showTab('activities')" class="text-sm font-semibold text-coffee-brown hover:text-dark-espresso flex items-center gap-1 transition-colors">
+                        Lihat Semua Kegiatan <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Featured Card 1: Nobar & Bazar -->
+                    <div class="bg-warm-white rounded-xl border border-muted-taupe overflow-hidden vintage-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-64 bg-soft-cream overflow-hidden">
+                                <img src="WhatsApp Image 2026-09-17 at 17.39.44 (1).jpg" alt="Nobar & Bazar Owler English Club 2026" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0E5D2/38271E?text=Nobar+%26+Bazar+2026'">
+                                <div class="absolute top-3 left-3 bg-dark-espresso text-warm-white text-xs px-3 py-1 rounded-full font-medium">
+                                    Events & Programs • 2026
+                                </div>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <h3 class="serif-font text-xl font-bold text-dark-espresso">Nobar & Bazar 2026</h3>
+                                <p class="text-xs text-coffee-brown font-semibold uppercase tracking-wider">Owler English Club Matsagisa Boalemo</p>
+                                <p class="text-sm text-dark-espresso/80 line-clamp-3">
+                                    A Moment of Togetherness, Creativity, and Collaboration. Dokumentasi kegiatan Nobar & Bazar yang diselenggarakan oleh Owler English Club Matsagisa Boalemo pada tahun 2026.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <button onclick="openActivityDetail('nobar')" class="w-full py-2 bg-soft-cream hover:bg-coffee-brown hover:text-warm-white text-dark-espresso border border-coffee-brown/30 rounded-lg text-sm font-medium transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Featured Card 2: Spelling Bee Competition -->
+                    <div class="bg-warm-white rounded-xl border border-muted-taupe overflow-hidden vintage-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-64 bg-soft-cream overflow-hidden">
+                                <img src="WhatsApp Image 2026-10-22 at 11.05.45.jpeg" alt="Spelling Bee Competition 2026" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0E5D2/38271E?text=Spelling+Bee+2026'">
+                                <div class="absolute top-3 left-3 bg-dark-espresso text-warm-white text-xs px-3 py-1 rounded-full font-medium">
+                                    Competitions • 2026
+                                </div>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <h3 class="serif-font text-xl font-bold text-dark-espresso">Spelling Bee Competition 2026</h3>
+                                <p class="text-xs text-coffee-brown font-semibold uppercase tracking-wider">Owler English Club Matsagisa Boalemo</p>
+                                <p class="text-sm text-dark-espresso/80 line-clamp-3">
+                                    Celebrating Young Learners and Their Passion for English. Lomba Spelling Bee tingkat SD/MI se-Kabupaten Boalemo tahun 2026 untuk mengasah keberanian dan penguasaan kosakata bahasa Inggris.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <button onclick="openActivityDetail('spelling')" class="w-full py-2 bg-soft-cream hover:bg-coffee-brown hover:text-warm-white text-dark-espresso border border-coffee-brown/30 rounded-lg text-sm font-medium transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= SECTION 2: MESSAGE CORNER ================= -->
+        <section id="page-message" class="hidden max-w-3xl mx-auto space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">Leave Your Message</span>
+                <h1 class="serif-font text-3xl md:text-4xl font-bold text-dark-espresso">Message Corner</h1>
+                <p class="text-sm text-dark-espresso/80">
+                    Kirimkan pesan apresiasi, ucapan terima kasih, pesan motivasi, atau keluh kesah sekolah secara santun. Pesan akan ditinjau oleh tim pengelola sebelum dibacakan saat siaran.
+                </p>
+            </div>
+
+            <!-- Private Channel Alert Box for Sensitive Bullying Reports -->
+            <div class="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg text-xs md:text-sm text-amber-900 space-y-1">
+                <div class="font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-700"></i> Jalur Bantuan & Perlindungan Privat
+                </div>
+                <p>
+                    Apabila Anda mengalami tindakan perundungan (bullying) atau masalah pribadi serius di lingkungan sekolah, pesan tidak akan dibacakan di publik. Pilih kategori <strong>"Keluh Kesah Sekolah"</strong> untuk diteruskan secara privat kepada Guru Pembina/BK sekolah secara aman.
+                </p>
+            </div>
+
+            <form id="form-message" onsubmit="handleFormSubmit(event, 'message')" class="bg-warm-white p-6 md:p-8 rounded-xl border border-muted-taupe vintage-border space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Nama Pengirim (Opsional)</label>
+                        <input type="text" id="msg-sender" placeholder="Contoh: Andi Class 8A" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Opsi Identitas *</label>
+                        <select id="msg-identity" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                            <option value="Tampilkan Nama">Tampilkan Nama Saya</option>
+                            <option value="Anonim">Kirim Secara Anonim (Rahasia)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Penerima Pesan (Opsional)</label>
+                        <input type="text" id="msg-recipient" placeholder="Contoh: Ibu Guru Bahasa Inggris / Teman-teman IX-B" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Kategori Pesan *</label>
+                        <select id="msg-category" required class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                            <option value="">-- Pilih Kategori Pesan --</option>
+                            <option value="Ucapan Terima Kasih">Ucapan Terima Kasih</option>
+                            <option value="Apresiasi Guru/Teman">Apresiasi kepada Guru/Teman</option>
+                            <option value="Pesan Motivasi">Pesan Motivasi</option>
+                            <option value="Permintaan Maaf">Permintaan Maaf</option>
+                            <option value="Keluh Kesah Sekolah">Keluh Kesah Sekolah (Saran/Privat)</option>
+                            <option value="Harapan & Saran">Harapan & Saran Membangun</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Isi Pesan *</label>
+                    <textarea id="msg-content" rows="5" required placeholder="Tuliskan pesan Anda dengan jelas, santun, dan tidak menyinggung perasaan orang lain..." class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown"></textarea>
+                </div>
+
+                <div class="text-xs text-dark-espresso/60 italic">
+                    * Pesan akan melalui sistem pemeriksaan kosa kata & moderasi tim sebelum disiarkan.
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg font-bold text-sm transition-all shadow">
+                    <i class="fa-regular fa-paper-plane mr-2"></i> Kirim Pesan ke Owler Frequency
+                </button>
+            </form>
+        </section>
+
+        <!-- ================= SECTION 3: SONG REQUEST ================= -->
+        <section id="page-song" class="hidden max-w-3xl mx-auto space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">Choose Your Frequency</span>
+                <h1 class="serif-font text-3xl md:text-4xl font-bold text-dark-espresso">English Song Request</h1>
+                <p class="text-sm text-dark-espresso/80">
+                    Ajukan lagu berbahasa Inggris favoritmu untuk diputar saat jeda siaran radio sekolah Owler Frequency.
+                </p>
+            </div>
+
+            <!-- Guidelines Info -->
+            <div class="bg-soft-cream/50 p-4 rounded-lg border border-muted-taupe/40 text-xs text-dark-espresso/80 space-y-1">
+                <p class="font-bold text-coffee-brown"><i class="fa-solid fa-circle-info mr-1"></i> Syarat & Ketentuan Song Request:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Wajib lagu berbahasa Inggris.</li>
+                    <li>Lirik lagu bebas dari kata-kata kasar, konten dewasa (18+), eksplisit, atau ujaran kebencian.</li>
+                    <li>Tim Owler English Club berhak menolak atau mengganti lagu yang tidak sesuai aturan sekolah.</li>
+                </ul>
+            </div>
+
+            <form id="form-song" onsubmit="handleFormSubmit(event, 'song')" class="bg-warm-white p-6 md:p-8 rounded-xl border border-muted-taupe vintage-border space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Judul Lagu *</label>
+                        <input type="text" id="song-title" required placeholder="Contoh: Count On Me" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Penyanyi / Grup Musik *</label>
+                        <input type="text" id="song-artist" required placeholder="Contoh: Bruno Mars" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Nama Pengirim (Opsional)</label>
+                        <input type="text" id="song-sender" placeholder="Nama Anda" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Pilihan Identitas *</label>
+                        <select id="song-identity" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                            <option value="Tampilkan Nama">Tampilkan Nama</option>
+                            <option value="Anonim">Anonim</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Nama Penerima Dedikasi Lagu (Opsional)</label>
+                    <input type="text" id="song-dedication-to" placeholder="Lagu ini didedikasikan untuk..." class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Alasan Request / Pesan Dedikasi (Opsional)</label>
+                    <textarea id="song-reason" rows="3" placeholder="Mengapa kamu menyukai lagu ini atau pesan khusus yang ingin disampaikan..." class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg font-bold text-sm transition-all shadow">
+                    <i class="fa-solid fa-music mr-2"></i> Ajukan Lagu Bahasa Inggris
+                </button>
+            </form>
+        </section>
+
+        <!-- ================= SECTION 4: TOPIC SUGGESTION ================= -->
+        <section id="page-topic" class="hidden max-w-3xl mx-auto space-y-8">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">What's Next on Frequency?</span>
+                <h1 class="serif-font text-3xl md:text-4xl font-bold text-dark-espresso">Topic Suggestion</h1>
+                <p class="text-sm text-dark-espresso/80">
+                    Usulkan topik menarik untuk dibahas oleh penyiar Owler English Club pada siaran radio mendatang.
+                </p>
+            </div>
+
+            <!-- Topic Ideas Cards -->
+            <div class="bg-soft-cream/40 p-5 rounded-xl border border-muted-taupe/40 space-y-3">
+                <h3 class="text-xs font-bold text-coffee-brown uppercase tracking-wider"><i class="fa-regular fa-lightbulb mr-1"></i> Inspirasi Contoh Topik Siaran:</h3>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Pencegahan Bullying di Sekolah</span>
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Tips Percaya Diri Speaking English</span>
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Membangun Pertemanan Sehat</span>
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Cara Mengatasi Rasa Gugup Public Speaking</span>
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Menjaga Kebersihan Lingkungan Matsagisa</span>
+                    <span class="bg-warm-white px-3 py-1 rounded-full border border-muted-taupe/40 text-dark-espresso">Bijak Menggunakan Media Sosial</span>
+                </div>
+            </div>
+
+            <form id="form-topic" onsubmit="handleFormSubmit(event, 'topic')" class="bg-warm-white p-6 md:p-8 rounded-xl border border-muted-taupe vintage-border space-y-6">
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Judul / Tema Topik Usulan *</label>
+                    <input type="text" id="topic-title" required placeholder="Contoh: Pentingnya Saling Menghargai Perbedaan Perasaan di Sekolah" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Alasan Mengusulkan Topik Ini *</label>
+                    <textarea id="topic-reason" rows="3" required placeholder="Jelaskan mengapa topik ini penting dan menarik untuk disiarkan di mikrofon sekolah..." class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Pertanyaan Kunci yang Ingin Dibahas (Opsional)</label>
+                    <textarea id="topic-questions" rows="2" placeholder="Contoh: Bagaimana cara menegur teman yang bicara kasar tanpa membuat marah?" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Nama Pengusul (Opsional)</label>
+                        <input type="text" id="topic-sender" placeholder="Nama Anda" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-dark-espresso uppercase tracking-wider mb-2">Identitas *</label>
+                        <select id="topic-identity" class="w-full px-4 py-2.5 rounded-lg border border-muted-taupe bg-warm-white text-sm focus:outline-none focus:border-coffee-brown">
+                            <option value="Tampilkan Nama">Tampilkan Nama Saya</option>
+                            <option value="Anonim">Pengusul Anonim</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg font-bold text-sm transition-all shadow">
+                    <i class="fa-regular fa-lightbulb mr-2"></i> Kirim Usulan Topik Siaran
+                </button>
+            </form>
+        </section>
+
+        <!-- ================= SECTION 5: FREQUENCY ARCHIVE ================= -->
+        <section id="page-archive" class="hidden space-y-8">
+            <div class="text-center space-y-2 max-w-2xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">Past Broadcasts & Summaries</span>
+                <h1 class="serif-font text-3xl md:text-4xl font-bold text-dark-espresso">Frequency Archive</h1>
+                <p class="text-sm text-dark-espresso/80">
+                    Arsip siaran radio sekolah Owler Frequency, berisi rangkuman pembahasan topik, lagu yang telah diputar, dan pesan positif terpopuler.
+                </p>
+            </div>
+
+            <!-- Archive Search & Filter Bar -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-between items-center bg-soft-cream/40 p-4 rounded-xl border border-muted-taupe/40">
+                <input type="text" id="archive-search" oninput="filterArchive()" placeholder="Cari topik siaran atau kata kunci..." class="w-full sm:w-80 px-4 py-2 rounded-lg border border-muted-taupe bg-warm-white text-sm">
+                <div class="text-xs text-coffee-brown font-semibold">
+                    <i class="fa-solid fa-box-archive mr-1"></i> Terorganisir & Diperbarui oleh Administrator
+                </div>
+            </div>
+
+            <!-- Archive Items Grid -->
+            <div id="archive-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Archive Card 1 -->
+                <div class="bg-warm-white p-6 rounded-xl border border-muted-taupe space-y-4 vintage-border">
+                    <div class="flex justify-between items-start border-b border-muted-taupe/30 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-coffee-brown uppercase tracking-wider block">Episode #04 • Oktober 2026</span>
+                            <h3 class="serif-font text-lg font-bold text-dark-espresso">Pentingnya Public Speaking & Mengatasi Nerve Saat Speaking English</h3>
+                        </div>
+                        <span class="px-2.5 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Siaran Selesai</span>
+                    </div>
+                    <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                        Membahas tips percaya diri berbicara di depan umum, teknik pernapasan untuk mengurangi gugup, serta pentingnya terus mencoba tanpa takut salah kosa kata bahasa Inggris.
+                    </p>
+                    <div class="bg-soft-cream/40 p-3 rounded text-xs space-y-1 border border-muted-taupe/30">
+                        <div class="font-bold text-dark-espresso"><i class="fa-solid fa-music mr-1 text-coffee-brown"></i> Song Played: "Count On Me" - Bruno Mars</div>
+                        <div class="text-dark-espresso/70"><i class="fa-solid fa-comments mr-1 text-coffee-brown"></i> Message Highlight: Apresiasi untuk seluruh panitia lomba Spelling Bee Boalemo.</div>
+                    </div>
+                </div>
+
+                <!-- Archive Card 2 -->
+                <div class="bg-warm-white p-6 rounded-xl border border-muted-taupe space-y-4 vintage-border">
+                    <div class="flex justify-between items-start border-b border-muted-taupe/30 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-coffee-brown uppercase tracking-wider block">Episode #03 • September 2026</span>
+                            <h3 class="serif-font text-lg font-bold text-dark-espresso">Membangun Keakraban Melalui Nobar & Kebersamaan</h3>
+                        </div>
+                        <span class="px-2.5 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">Siaran Selesai</span>
+                    </div>
+                    <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                        Rangkuman keseruan kegiatan Nobar & Bazar Owler English Club 2026. Diskusi interaktif mengenai kerja sama tim dan pentingnya saling mendukung sesama siswa di sekolah.
+                    </p>
+                    <div class="bg-soft-cream/40 p-3 rounded text-xs space-y-1 border border-muted-taupe/30">
+                        <div class="font-bold text-dark-espresso"><i class="fa-solid fa-music mr-1 text-coffee-brown"></i> Song Played: "A Thousand Years" - Christina Perri</div>
+                        <div class="text-dark-espresso/70"><i class="fa-solid fa-comments mr-1 text-coffee-brown"></i> Message Highlight: Ucapan terima kasih untuk pembina ekstrakurikuler.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 6: OUR ACTIVITIES ================= -->
+        <section id="page-activities" class="hidden space-y-8">
+            <div class="text-center space-y-2 max-w-2xl mx-auto">
+                <span class="text-xs font-bold uppercase tracking-widest text-coffee-brown">Owler English Club Gallery</span>
+                <h1 class="serif-font text-3xl md:text-4xl font-bold text-dark-espresso">Our Activities</h1>
+                <p class="text-sm text-dark-espresso/80">
+                    Dokumentasi nyata kegiatan ekstrakurikuler Owler English Club MTs Negeri 1 Boalemo (Matsagisa) dalam membangun kreativitas, kebersamaan, dan prestasi siswa.
+                </p>
+            </div>
+
+            <!-- Activity Cards Grid -->
+            <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Activity Card 1: Nobar & Bazar -->
+                <div class="bg-warm-white rounded-xl border border-muted-taupe overflow-hidden vintage-card flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-72 bg-soft-cream overflow-hidden">
+                            <img src="WhatsApp Image 2026-09-17 at 17.39.44 (1).jpg" alt="Dokumentasi Nobar & Bazar 2026" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0E5D2/38271E?text=Nobar+%26+Bazar+2026'">
+                            <div class="absolute top-3 left-3 bg-dark-espresso text-warm-white text-xs px-3 py-1 rounded-full font-medium">
+                                Events & Programs
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-warm-white/90 text-dark-espresso text-xs px-2.5 py-1 rounded font-bold">
+                                Tahun 2026
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="serif-font text-2xl font-bold text-dark-espresso">Nobar & Bazar</h3>
+                            <div class="text-xs text-coffee-brown font-bold tracking-wider uppercase">Penyelenggara: Owler English Club Matsagisa Boalemo</div>
+                            <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                                <strong>A Moment of Togetherness, Creativity, and Collaboration.</strong><br>
+                                Dokumentasi kegiatan Nobar & Bazar yang diselenggarakan oleh Owler English Club Matsagisa Boalemo pada tahun 2026. Kegiatan ini menjadi bagian dari pengalaman siswa dalam membangun kebersamaan, kreativitas, dan kerja sama melalui program ekstrakurikuler.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openActivityDetail('nobar')" class="w-full py-2.5 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg text-sm font-semibold transition-all shadow">
+                            <i class="fa-regular fa-image mr-1"></i> View Details & Full Photo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Activity Card 2: Spelling Bee Competition -->
+                <div class="bg-warm-white rounded-xl border border-muted-taupe overflow-hidden vintage-card flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-72 bg-soft-cream overflow-hidden">
+                            <img src="WhatsApp Image 2026-10-22 at 11.05.45.jpeg" alt="Dokumentasi Lomba Spelling Bee 2026" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F0E5D2/38271E?text=Spelling+Bee+2026'">
+                            <div class="absolute top-3 left-3 bg-dark-espresso text-warm-white text-xs px-3 py-1 rounded-full font-medium">
+                                Competitions
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-warm-white/90 text-dark-espresso text-xs px-2.5 py-1 rounded font-bold">
+                                Tahun 2026
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="serif-font text-2xl font-bold text-dark-espresso">Spelling Bee Competition</h3>
+                            <div class="text-xs text-coffee-brown font-bold tracking-wider uppercase">Penyelenggara: Owler English Club Matsagisa Boalemo</div>
+                            <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                                <strong>Celebrating Young Learners and Their Passion for English.</strong><br>
+                                Dokumentasi kegiatan lomba Spelling Bee tingkat SD/MI se-Kabupaten Boalemo yang diselenggarakan pada tahun 2026. Kegiatan ini menjadi bagian dari upaya mendukung pengembangan kemampuan bahasa Inggris, khususnya penguasaan kosakata dan keterampilan mengeja dalam bahasa Inggris.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openActivityDetail('spelling')" class="w-full py-2.5 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg text-sm font-semibold transition-all shadow">
+                            <i class="fa-regular fa-image mr-1"></i> View Details & Full Photo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-espresso text-warm-white border-t border-coffee-brown mt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+            
+            <!-- Footer Branding -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <img src="Desain tanpa judul (6).png" alt="Logo Owler Frequency" class="h-12 w-auto bg-warm-white/10 p-1 rounded object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/F0E5D2/38271E?text=Logo'">
+                    <div>
+                        <span class="serif-font text-xl font-bold block text-warm-white">OWLER FREQUENCY</span>
+                        <span class="text-xs text-muted-taupe uppercase tracking-widest font-semibold">Tune In. Speak Up.</span>
+                    </div>
+                </div>
+                <p class="text-xs text-muted-taupe leading-relaxed">
+                    Program Radio Sekolah Resmi dari <strong>Owler English Club MTs Negeri 1 Boalemo (Matsagisa)</strong>. Media interaktif tempat siswa menyampaikan pesan apresiasi, request lagu, dan usulan topik siaran positif.
+                </p>
+            </div>
+
+            <!-- Navigation Quick Links -->
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="serif-font font-bold text-sm text-soft-cream uppercase tracking-wider">Navigasi Utama</h4>
+                <ul class="text-xs space-y-2 text-muted-taupe">
+                    <li><button onclick="showTab('home')" class="hover:text-warm-white transition-colors">Halaman Utama (Home)</button></li>
+                    <li><button onclick="showTab('message')" class="hover:text-warm-white transition-colors">Message Corner</button></li>
+                    <li><button onclick="showTab('song')" class="hover:text-warm-white transition-colors">English Song Request</button></li>
+                    <li><button onclick="showTab('topic')" class="hover:text-warm-white transition-colors">Topic Suggestion</button></li>
+                    <li><button onclick="showTab('activities')" class="hover:text-warm-white transition-colors">Our Activities (Galeri Kegiatan)</button></li>
+                </ul>
+            </div>
+
+            <!-- Identity & School Info -->
+            <div class="md:col-span-4 space-y-3">
+                <h4 class="serif-font font-bold text-sm text-soft-cream uppercase tracking-wider">Ekstrakurikuler Bahasa Inggris</h4>
+                <p class="text-xs text-muted-taupe leading-relaxed">
+                    <strong>Owler English Club — MTs Negeri 1 Boalemo</strong><br>
+                    Wadah pengembangan bakat bahasa Inggris, public speaking, kreativitas, dan penyiaran radio bagi siswa Matsagisa Boalemo.
+                </p>
+                <div class="pt-2 text-xs text-soft-cream/80">
+                    <i class="fa-solid fa-location-dot mr-2 text-coffee-brown"></i> Kabupaten Boalemo, Provinsi Gorontalo
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-coffee-brown/40 text-center text-xs text-muted-taupe">
+            <p>© 2026 Owler Frequency — Owler English Club MTs Negeri 1 Boalemo. All Rights Reserved.</p>
+            <p class="mt-1 text-muted-taupe/60 italic">“A school frequency where every meaningful voice deserves to be heard.”</p>
+        </div>
+    </footer>
+
+    <!-- ================= MODALS & POPUPS ================= -->
+
+    <!-- MODAL 1: SYSTEM AUTOMATED MODERATION WARNING POPUP -->
+    <div id="modal-warning" class="fixed inset-0 bg-dark-espresso/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-warm-white max-w-lg w-full rounded-xl border-2 border-amber-600 p-6 md:p-8 space-y-5 shadow-2xl vintage-border">
+            <div class="flex items-center gap-3 text-amber-700">
+                <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+                <h3 class="serif-font font-bold text-xl text-dark-espresso">Peringatan Sistem: Konten Tidak Sesuai</h3>
+            </div>
+            
+            <p class="text-sm text-dark-espresso/90 leading-relaxed bg-amber-50 p-4 rounded border border-amber-200">
+                “Sistem kami mendeteksi adanya penggunaan kata atau frasa yang berpotensi melanggar panduan komunitas, seperti ujaran kebencian, kata kasar, penghinaan, diskriminasi, atau konten dewasa.
+                <br><br>
+                Silakan periksa kembali dan perbaiki pesan Anda sebelum mengirim demi menjaga kenyamanan bersama.
+                <br><br>
+                Jika Anda merasa peringatan ini muncul karena kesalahan, silakan tinjau kembali konteks pesan Anda atau hubungi pengelola website.”
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button onclick="closeWarningModal()" class="flex-1 py-2.5 bg-coffee-brown hover:bg-dark-espresso text-warm-white rounded-lg text-sm font-bold transition-all">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Konten
+                </button>
+                <button onclick="closeWarningModal()" class="flex-1 py-2.5 bg-soft-cream hover:bg-muted-taupe text-dark-espresso border border-coffee-brown/40 rounded-lg text-sm font-semibold transition-all">
+                    Periksa Kembali Pesan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: SUCCESS SUBMISSION POPUP -->
+    <div id="modal-success" class="fixed inset-0 bg-dark-espresso/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-warm-white max-w-md w-full rounded-xl border border-muted-taupe p-6 text-center space-y-4 shadow-xl vintage-border">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="serif-font font-bold text-2xl text-dark-espresso">Terima Kasih!</h3>
+            <p class="text-sm text-dark-espresso/80 leading-relaxed">
+                Kiriman Anda berhasil tersimpan dalam sistem kami dan berada dalam status <strong>"Menunggu Moderasi"</strong>. Tim Owler English Club akan meninjau pesan Anda sebelum dibacakan di radio sekolah.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-coffee-brown text-warm-white rounded-lg font-bold text-sm hover:bg-dark-espresso transition-all">
+                Tutup & Kembali
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: ACTIVITY DETAIL LIGHTBOX -->
+    <div id="modal-activity" class="fixed inset-0 bg-dark-espresso/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-warm-white max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-xl border border-muted-taupe p-6 md:p-8 space-y-6 shadow-2xl relative">
+            <button onclick="closeActivityModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-soft-cream hover:bg-coffee-brown hover:text-warm-white text-dark-espresso flex items-center justify-center font-bold">
+                ✕
+            </button>
+            
+            <div class="space-y-2 border-b border-muted-taupe/40 pb-4">
+                <span id="act-modal-badge" class="px-3 py-1 bg-soft-cream text-coffee-brown text-xs font-bold rounded-full border border-coffee-brown/30">Category</span>
+                <h2 id="act-modal-title" class="serif-font text-2xl md:text-3xl font-bold text-dark-espresso">Activity Title</h2>
+                <div id="act-modal-organizer" class="text-xs font-semibold text-coffee-brown uppercase tracking-wider">Owler English Club Matsagisa Boalemo</div>
+            </div>
+
+            <div class="rounded-xl overflow-hidden border border-muted-taupe bg-soft-cream/30">
+                <img id="act-modal-img" src="" alt="Dokumentasi Kegiatan" class="w-full h-auto max-h-96 object-contain mx-auto">
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-dark-espresso text-sm uppercase tracking-wider">Deskripsi Kegiatan</h4>
+                <p id="act-modal-desc" class="text-sm text-dark-espresso/80 leading-relaxed whitespace-pre-line"></p>
+            </div>
+
+            <div class="pt-4 border-t border-muted-taupe/40 text-right">
+                <button onclick="closeActivityModal()" class="px-6 py-2 bg-coffee-brown text-warm-white text-sm font-semibold rounded-lg hover:bg-dark-espresso transition-all">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // Data Store using localStorage simulation
+        let submissions = JSON.parse(localStorage.getItem('owler_submissions') || '[]');
+
+        // Profanity & Violation Filter List (Automatic Bad Word Screening)
+        const prohibitedKeywords = [
+            'bodoh', 'tolol', 'anjing', 'babi', 'bangsat', 'kontol', 'memek', 'kampret',
+            'sialan', 'jelek', 'benci', 'hina', 'racist', 'stfu', 'fuck', 'shit', 'bitch',
+            'asshole', 'suck', 'porno', 'sex', 'bully'
+        ];
+
+        // Default Activity Data
+        const activityData = {
+            nobar: {
+                title: 'Nobar & Bazar',
+                year: '2026',
+                category: 'Events & Programs',
+                organizer: 'Owler English Club Matsagisa Boalemo',
+                img: 'WhatsApp Image 2026-09-17 at 17.39.44 (1).jpg',
+                desc: 'A Moment of Togetherness, Creativity, and Collaboration.\n\nDokumentasi kegiatan Nobar & Bazar yang diselenggarakan oleh Owler English Club Matsagisa Boalemo pada tahun 2026. Kegiatan ini menjadi bagian dari pengalaman siswa dalam membangun kebersamaan, kreativitas, dan kerja sama melalui program ekstrakurikuler.'
+            },
+            spelling: {
+                title: 'Spelling Bee Competition',
+                year: '2026',
+                category: 'Competitions',
+                organizer: 'Owler English Club Matsagisa Boalemo',
+                img: 'WhatsApp Image 2026-10-22 at 11.05.45.jpeg',
+                desc: 'Celebrating Young Learners and Their Passion for English.\n\nDokumentasi kegiatan lomba Spelling Bee tingkat SD/MI se-Kabupaten Boalemo yang diselenggarakan pada tahun 2026. Kegiatan ini menjadi bagian dari upaya mendukung pengembangan kemampuan bahasa Inggris, khususnya penguasaan kosakata dan keterampilan mengeja dalam bahasa Inggris.'
+            }
+        };
+
+        // Navigation Tab Switcher
+        function showTab(tabName) {
+            const pages = ['home', 'message', 'song', 'topic', 'archive', 'activities'];
+            pages.forEach(p => {
+                const pageEl = document.getElementById(`page-${p}`);
+                if (pageEl) pageEl.classList.add('hidden');
+
+                const navEl = document.getElementById(`nav-${p}`);
+                if (navEl) navEl.classList.remove('active');
+            });
+
+            const activePage = document.getElementById(`page-${tabName}`);
+            if (activePage) activePage.classList.remove('hidden');
+
+            const activeNav = document.getElementById(`nav-${tabName}`);
+            if (activeNav) activeNav.classList.add('active');
+
+            // Hide mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            // Scroll to top smooth
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Automatic Screening Logic
+        function containsProhibitedContent(text) {
+            if (!text) return false;
+            const lower = text.toLowerCase();
+            return prohibitedKeywords.some(keyword => lower.includes(keyword));
+        }
+
+        // Form Handling Logic with Moderation Check
+        function handleFormSubmit(event, formType) {
+            event.preventDefault();
+            
+            let contentToCheck = "";
+            let newSubmission = {
+                id: Date.now(),
+                type: formType,
+                timestamp: new Date().toLocaleString('id-ID'),
+                status: 'Menunggu Moderasi'
+            };
+
+            if (formType === 'message') {
+                const content = document.getElementById('msg-content').value;
+                contentToCheck = content;
+                newSubmission.sender = document.getElementById('msg-sender').value || 'Siswa';
+                newSubmission.identity = document.getElementById('msg-identity').value;
+                newSubmission.recipient = document.getElementById('msg-recipient').value || '-';
+                newSubmission.category = document.getElementById('msg-category').value;
+                newSubmission.content = content;
+            } else if (formType === 'song') {
+                const title = document.getElementById('song-title').value;
+                const artist = document.getElementById('song-artist').value;
+                const reason = document.getElementById('song-reason').value;
+                contentToCheck = `${title} ${artist} ${reason}`;
+                newSubmission.songTitle = title;
+                newSubmission.artist = artist;
+                newSubmission.sender = document.getElementById('song-sender').value || 'Siswa';
+                newSubmission.identity = document.getElementById('song-identity').value;
+                newSubmission.recipient = document.getElementById('song-dedication-to').value || '-';
+                newSubmission.reason = reason || '-';
+            } else if (formType === 'topic') {
+                const title = document.getElementById('topic-title').value;
+                const reason = document.getElementById('topic-reason').value;
+                const questions = document.getElementById('topic-questions').value;
+                contentToCheck = `${title} ${reason} ${questions}`;
+                newSubmission.topicTitle = title;
+                newSubmission.reason = reason;
+                newSubmission.questions = questions || '-';
+                newSubmission.sender = document.getElementById('topic-sender').value || 'Siswa';
+                newSubmission.identity = document.getElementById('topic-identity').value;
+            }
+
+            // Run Automatic Bad Word Screening
+            if (containsProhibitedContent(contentToCheck)) {
+                openWarningModal();
+                return;
+            }
+
+            // Save submission if clean
+            submissions.push(newSubmission);
+            localStorage.setItem('owler_submissions', JSON.stringify(submissions));
+
+            // Reset Form
+            event.target.reset();
+
+            // Show Success Modal
+            openSuccessModal();
+        }
+
+        // Modals Control
+        function openWarningModal() {
+            document.getElementById('modal-warning').classList.remove('hidden');
+        }
+
+        function closeWarningModal() {
+            document.getElementById('modal-warning').classList.add('hidden');
+        }
+
+        function openSuccessModal() {
+            document.getElementById('modal-success').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('modal-success').classList.add('hidden');
+        }
+
+        function openActivityDetail(actKey) {
+            const act = activityData[actKey];
+            if (!act) return;
+
+            document.getElementById('act-modal-title').innerText = act.title;
+            document.getElementById('act-modal-badge').innerText = `${act.category} • ${act.year}`;
+            document.getElementById('act-modal-organizer').innerText = act.organizer;
+            document.getElementById('act-modal-img').src = act.img;
+            document.getElementById('act-modal-desc').innerText = act.desc;
+
+            document.getElementById('modal-activity').classList.remove('hidden');
+        }
+
+        function closeActivityModal() {
+            document.getElementById('modal-activity').classList.add('hidden');
+        }
+
+        function filterArchive() {
+            const query = document.getElementById('archive-search').value.toLowerCase();
+            const archiveCards = document.querySelectorAll('#archive-list > div');
+            archiveCards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
